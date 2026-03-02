@@ -5,7 +5,7 @@ import {
     Zap,
     ArrowRight,
     Box,
-    Layers,
+
     DollarSign,
     Workflow,
     PenTool,
@@ -44,12 +44,12 @@ export default function LandingPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-blue-500/30">
+        <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
             {/* Navigation */}
             <nav className="fixed w-full z-50 top-0 border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2 block">
-                        <Layers className="w-6 h-6 text-blue-500" />
+                        <img src="/logo.jpg" alt="Phantom Assembly Logo" className="w-6 h-6 rounded-sm object-contain mix-blend-screen" />
                         <span className="text-xl font-bold tracking-tight">Phantom Assembly</span>
                     </div>
                     <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
@@ -71,17 +71,17 @@ export default function LandingPage() {
             {/* Hero Section */}
             <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
                 {/* Abstract Background Glow */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/20 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
                             <Zap className="w-4 h-4" />
                             <span>The AI Compiler for Electro-Mechanical Hardware</span>
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
                             Vibe code your <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
                                 hardware.
                             </span>
                         </h1>
@@ -89,7 +89,7 @@ export default function LandingPage() {
                             Phantom Assembly turns messy design inputs into deterministic manufacturing plans. We build autonomous techno-economic models for consumer electronics—instantly generating BOMs, live procurement costing, and factory-ready work instructions.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link to="/demo" className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)]">
+                            <Link to="/demo" className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                                 Try Live Demo <ArrowRight className="w-4 h-4" />
                             </Link>
                             <button className="flex items-center justify-center gap-2 bg-slate-900 border border-slate-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all">
@@ -126,7 +126,7 @@ export default function LandingPage() {
 
                     <div className="grid md:grid-cols-3 gap-8">
                         <FeatureCard
-                            icon={<PenTool className="w-6 h-6 text-blue-400" />}
+                            icon={<PenTool className="w-6 h-6 text-emerald-400" />}
                             title="Messy Design Ingestion"
                             description="Upload unstructured CAD, rough sketches, or text prompts. Our vision models extract geometric constraints and electro-mechanical intent instantly."
                         />
@@ -149,10 +149,10 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="order-2 lg:order-1 relative">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent rounded-2xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-2xl" />
                             <div className="border border-slate-800 rounded-2xl p-8 bg-slate-900/50 backdrop-blur-sm relative z-10">
                                 <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                                    <Cpu className="text-blue-500" /> Target: Electro-Mechanical Assemblies
+                                    <Cpu className="text-emerald-500" /> Target: Electro-Mechanical Assemblies
                                 </h3>
                                 <ul className="space-y-4">
                                     {[
@@ -187,9 +187,9 @@ export default function LandingPage() {
 
             {/* The Pipeline CTA */}
             <section className="py-24 border-t border-white/5 relative">
-                <div className="absolute inset-0 bg-blue-900/10" />
+                <div className="absolute inset-0 bg-emerald-900/10" />
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                    <Box className="w-12 h-12 text-blue-500 mx-auto mb-6" />
+                    <Box className="w-12 h-12 text-emerald-500 mx-auto mb-6" />
                     <h2 className="text-4xl font-bold mb-6">Ready to compile your hardware?</h2>
                     <p className="text-xl text-slate-400 mb-10">
                         Join the private beta and start turning messy ideas into procurement-ready production plans.
