@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Send, Download, Plus, Bot, User, Layers, CheckCircle2,
+  Send, Download, Plus, Bot, User, CheckCircle2,
   Table as TableIcon, FileText, FileDown, Zap, Image as ImageIcon,
   Cpu, Activity
 } from 'lucide-react';
@@ -71,16 +71,16 @@ export default function Demo() {
   }, [appState]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-blue-500/30 overflow-hidden flex flex-col relative">
+    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30 overflow-hidden flex flex-col relative">
       {/* Background gradients */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
 
       {/* Header */}
       <header className="h-16 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl flex items-center px-6 z-20 shrink-0">
         <div className="flex items-center gap-2">
-          <Layers className="w-5 h-5 text-blue-500" />
-          <span className="text-lg font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">Phantom Assembly</span>
+          <img src="/logo.jpg" alt="Phantom Assembly Logo" className="w-5 h-5 rounded-sm object-contain mix-blend-screen" />
+          <span className="text-lg font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">Phantom Assembly</span>
         </div>
       </header>
 
@@ -96,8 +96,8 @@ export default function Demo() {
         >
           {appState === 'idle' && (
             <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-in fade-in zoom-in duration-500">
-              <div className="w-16 h-16 bg-blue-500/10 rounded-2xl border border-blue-500/20 flex items-center justify-center mb-6">
-                <Cpu className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 flex items-center justify-center mb-6">
+                <Cpu className="w-8 h-8 text-emerald-400" />
               </div>
               <h1 className="text-3xl font-semibold mb-3">What are we building?</h1>
               <p className="text-slate-400 max-w-md">
@@ -110,8 +110,8 @@ export default function Demo() {
             <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-slate-800' : 'bg-blue-600/20 border border-blue-500/30'}`}>
-                    {msg.role === 'user' ? <User className="w-4 h-4 text-slate-300" /> : <Bot className="w-4 h-4 text-blue-400" />}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-slate-800' : 'bg-emerald-600/20 border border-emerald-500/30'}`}>
+                    {msg.role === 'user' ? <User className="w-4 h-4 text-slate-300" /> : <Bot className="w-4 h-4 text-emerald-400" />}
                   </div>
                   <div className={`px-4 py-3 rounded-2xl text-sm ${msg.role === 'user'
                     ? 'bg-slate-800 text-slate-100 rounded-tr-sm break-words max-w-[85%]'
@@ -130,8 +130,8 @@ export default function Demo() {
 
               {appState === 'generating' && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center shrink-0">
-                    <Zap className="w-4 h-4 text-blue-400 animate-pulse" />
+                  <div className="w-8 h-8 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                    <Zap className="w-4 h-4 text-emerald-400 animate-pulse" />
                   </div>
                   <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/5 border border-white/10 w-full">
                     <div className="space-y-3">
@@ -139,7 +139,7 @@ export default function Demo() {
                         <div
                           key={i}
                           className={`flex items-center gap-2 text-xs font-mono transition-all duration-300 ${i < generationStep ? 'text-emerald-400' :
-                            i === generationStep ? 'text-blue-400 animate-pulse' :
+                            i === generationStep ? 'text-emerald-400 animate-pulse' :
                               'text-slate-600'
                             }`}
                         >
@@ -175,12 +175,12 @@ export default function Demo() {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={appState === 'generating' ? "Compiling..." : "Describe the assembly or drop CAD/images..."}
-                className="w-full bg-white/5 border border-white/10 text-white rounded-xl pl-12 pr-12 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all placeholder:text-slate-500 disabled:opacity-50"
+                className="w-full bg-white/5 border border-white/10 text-white rounded-xl pl-12 pr-12 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all placeholder:text-slate-500 disabled:opacity-50"
               />
               <button
                 onClick={handleSend}
                 disabled={!inputValue.trim() || appState === 'generating'}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -207,13 +207,13 @@ export default function Demo() {
               <div className="flex gap-6">
                 <button
                   onClick={() => setActiveTab('instructions')}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'instructions' ? 'border-blue-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'instructions' ? 'border-emerald-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
                 >
                   <FileText className="w-4 h-4" /> Work Instructions
                 </button>
                 <button
                   onClick={() => setActiveTab('bom')}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'bom' ? 'border-blue-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'bom' ? 'border-emerald-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
                 >
                   <TableIcon className="w-4 h-4" /> Bill of Materials & Cost
                 </button>
@@ -233,7 +233,7 @@ export default function Demo() {
                   <div className="flex flex-col items-center gap-4 opacity-50">
                     <div className="relative w-16 h-16">
                       <div className="absolute inset-0 border-4 border-slate-800 rounded-full"></div>
-                      <div className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+                      <div className="absolute inset-0 border-4 border-emerald-500 rounded-full border-t-transparent animate-spin"></div>
                     </div>
                     <span className="text-sm text-slate-400 animate-pulse">Processing geometric relations...</span>
                   </div>
@@ -256,7 +256,7 @@ export default function Demo() {
                         {/* Step 1 */}
                         <div className="bg-slate-900/50 rounded-xl p-6 border border-white/5">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold shrink-0">1</div>
+                            <div className="w-10 h-10 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold shrink-0">1</div>
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold mb-2">Prepare Bottom Enclosure & Top Plate</h3>
                               <p className="text-slate-400 text-sm mb-4 leading-relaxed">
@@ -272,7 +272,7 @@ export default function Demo() {
                         {/* Step 2 */}
                         <div className="bg-slate-900/50 rounded-xl p-6 border border-white/5">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold shrink-0">2</div>
+                            <div className="w-10 h-10 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold shrink-0">2</div>
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold mb-2">Install Switches & PCB</h3>
                               <p className="text-slate-400 text-sm mb-4 leading-relaxed">
@@ -288,7 +288,7 @@ export default function Demo() {
                         {/* Step 3 */}
                         <div className="bg-slate-900/50 rounded-xl p-6 border border-white/5">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold shrink-0">3</div>
+                            <div className="w-10 h-10 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold shrink-0">3</div>
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold mb-2">Fasten Assembly</h3>
                               <p className="text-slate-400 text-sm leading-relaxed">
@@ -349,7 +349,7 @@ export default function Demo() {
                           <tbody className="divide-y divide-white/5">
                             {bomData.map((item, i) => (
                               <tr key={i} className="hover:bg-slate-800/50 transition-colors">
-                                <td className="px-6 py-4 font-mono text-xs text-blue-400">{item.partNo}</td>
+                                <td className="px-6 py-4 font-mono text-xs text-emerald-400">{item.partNo}</td>
                                 <td className="px-6 py-4 text-slate-200">{item.name}</td>
                                 <td className="px-6 py-4 text-slate-400">{item.supplier}</td>
                                 <td className="px-6 py-4 text-slate-200">{item.qty}</td>
