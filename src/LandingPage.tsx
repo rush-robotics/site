@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
     Cpu,
-    Terminal,
     Zap,
     ArrowRight,
     Box,
@@ -17,14 +16,14 @@ import { Link } from 'react-router-dom';
 export default function LandingPage() {
     const [terminalText, setTerminalText] = useState('');
     const fullText = `> Initializing Phantom AI...
-> Ingesting unstructured input: "IoT Macropad Sketch.png"
+> Ingesting unstructured input: "Actuator_Assembly_v3.STEP"
 > Parsing N-ary geometry...
-> Identifying electro-mechanical dependencies...
-> 4x Mechanical Switches detected.
-> 1x MCU (RP2040) detected.
-> 2-Part ABS Injection Molded Case detected.
+> Parsing joint assembly tree...
+> Harmonic drive subassembly detected.
+> 6x DOF linkage chain detected.
+> Precision machined housing detected. Recommended: Tier 2 CM.
 > Querying Lightsail & DigiKey APIs...
-> Costing complete: $12.45 / unit @ 1k vol.
+> Costing complete: $847 / unit @ 500 vol. Operation tree ready.
 > Generating deterministic BOM...
 > Compiling work instructions...
 > SUCCESS: Techno-Economic Model Ready.`;
@@ -77,24 +76,21 @@ export default function LandingPage() {
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
                             <Zap className="w-4 h-4" />
-                            <span>The AI Compiler for Electro-Mechanical Hardware</span>
+                            <span>Built for hardware teams at Series A–C robotics companies</span>
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                            Vibe code your <br />
+                            Your design, <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
-                                hardware.
+                                factory-ready in 30 minutes.
                             </span>
                         </h1>
                         <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-                            Phantom Assembly turns messy design inputs into deterministic manufacturing plans. We build autonomous techno-economic models for consumer electronics—instantly generating BOMs, live procurement costing, and factory-ready work instructions.
+                            Phantom Assembly turns your CAD files and design intent into a structured manufacturing plan — version-controlled, cost-rolled, and ready for your contract manufacturer. No more re-quotes. No more lost context on revision 3.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link to="/demo" className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                                 Try Live Demo <ArrowRight className="w-4 h-4" />
                             </Link>
-                            <button className="flex items-center justify-center gap-2 bg-slate-900 border border-slate-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all">
-                                <Terminal className="w-4 h-4" /> Read the Docs
-                            </button>
                         </div>
                     </div>
 
@@ -156,10 +152,9 @@ export default function LandingPage() {
                                 </h3>
                                 <ul className="space-y-4">
                                     {[
-                                        "IoT Devices & Smart Home Hardware",
-                                        "Consumer Wearables & Gadgets",
-                                        "Custom Mechanical Keyboards / Macropads",
-                                        "Robotics & Drone Sub-assemblies"
+                                         "Robotics startups (Series A–C)",
+                                         "Hardware leads managing CM relationships solo",
+                                         "Teams iterating faster than their quote cycle"
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
@@ -170,15 +165,14 @@ export default function LandingPage() {
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Built for the next generation of CES-defining products.</h2>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Built for robotics hardware teams who are done losing weeks to the CM handoff.</h2>
                             <p className="text-lg text-slate-400 mb-6">
-                                Consumer electronics are incredibly complex, combining PCBs, plastic enclosures, wiring, and fasteners.
-                                Phantom Assembly parses this complexity, organizing multi-level electro-mechanical dependencies so hardware startups can iterate faster.
+                                Complex actuated assemblies — joints, grippers, drives — break every generic tool. Phantom is purpose-built for the electro-mechanical handoff: from your STEP file to a factory-ready operation tree, in one step.
                             </p>
                             <div className="flex items-center gap-4 text-sm text-slate-300 font-medium">
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">PCBAs</div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Plastics</div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Fasteners</div>
+                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Actuated Joints</div>
+                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Harmonic Drives</div>
+                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Multi-DOF Grippers</div>
                             </div>
                         </div>
                     </div>
