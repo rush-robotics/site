@@ -4,29 +4,23 @@ import {
     Zap,
     ArrowRight,
     Box,
-
-    DollarSign,
-    Workflow,
-    PenTool,
     CheckCircle2,
-    Play
+    Play,
+    ShieldCheck,
+    Bot,
+    UploadCloud
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
     const [terminalText, setTerminalText] = useState('');
-    const fullText = `> Initializing Phantom AI...
-> Ingesting unstructured input: "Actuator_Assembly_v3.STEP"
-> Parsing N-ary geometry...
-> Parsing joint assembly tree...
-> Harmonic drive subassembly detected.
-> 6x DOF linkage chain detected.
-> Precision machined housing detected. Recommended: Tier 2 CM.
-> Querying Lightsail & DigiKey APIs...
-> Costing complete: $847 / unit @ 500 vol. Operation tree ready.
-> Generating deterministic BOM...
-> Compiling work instructions...
-> SUCCESS: Techno-Economic Model Ready.`;
+    const fullText = `> Initializing Phantom VLA Model...
+> Ingesting CAD: "Actuated_Joint_v7.STEP"
+> Generating Rooted Manufacturing Operation Tree...
+> Mapping constraints to robotic execution paths...
+> Compiling prompt-result pairs for arm sequence...
+> Simulating snap-fit assembly...
+> SUCCESS: Assembly sequence verified. Ready for execution.`;
 
     // Typing effect for the hero terminal
     useEffect(() => {
@@ -52,16 +46,13 @@ export default function LandingPage() {
                         <span className="text-xl font-bold tracking-tight">Phantom Assembly</span>
                     </div>
                     <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-                        <a href="#product" className="hover:text-white transition-colors">Product</a>
-                        <a href="#pipeline" className="hover:text-white transition-colors">The Compiler</a>
-                        <a href="#use-cases" className="hover:text-white transition-colors">Consumer Hardware</a>
+                        <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
+                        <a href="#why-phantom" className="hover:text-white transition-colors">Why Phantom?</a>
+                        <a href="#pilot" className="hover:text-white transition-colors">Pilot Program</a>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Link to="/demo" className="text-slate-300 hover:text-white text-sm font-semibold transition-colors flex items-center gap-2">
-                            <Play className="w-4 h-4 fill-current" /> Try Demo
-                        </Link>
                         <button className="bg-white text-black px-4 py-2 rounded-md text-sm font-semibold hover:bg-slate-200 transition-colors">
-                            Request Early Access
+                            Contact Us
                         </button>
                     </div>
                 </div>
@@ -76,20 +67,23 @@ export default function LandingPage() {
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
                             <Zap className="w-4 h-4" />
-                            <span>Built for hardware teams at Series A–C robotics companies</span>
+                            <span>The Protolabs for Mechatronic Assembly</span>
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                            Your design, <br />
+                            The API for <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
-                                factory-ready in 30 minutes.
+                                Mechatronic Assembly.
                             </span>
                         </h1>
                         <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-                            Phantom Assembly turns your CAD files and design intent into a structured manufacturing plan — version-controlled, cost-rolled, and ready for your contract manufacturer. No more re-quotes. No more lost context on revision 3.
+                            Don't write another PDF traveler. Upload your CAD, and our VLA-powered robotic microfactory will assemble and ship your complex actuated joints in 3 days.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link to="/demo" className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                                Try Live Demo <ArrowRight className="w-4 h-4" />
+                            <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                                Upload CAD for Instant Quote <ArrowRight className="w-4 h-4" />
+                            </button>
+                            <Link to="/demo" className="flex items-center justify-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all border border-slate-700">
+                                Watch the Microfactory in Action <Play className="w-4 h-4 fill-current" />
                             </Link>
                         </div>
                     </div>
@@ -102,7 +96,7 @@ export default function LandingPage() {
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
                             </div>
-                            <span className="text-xs font-mono text-slate-500 ml-2">compiler.exe — Phantom Assembly</span>
+                            <span className="text-xs font-mono text-slate-500 ml-2">microfactory.exe — Phantom Assembly</span>
                         </div>
                         <div className="p-6 h-[320px] overflow-y-auto font-mono text-sm text-emerald-400 leading-relaxed">
                             <pre className="whitespace-pre-wrap">{terminalText}</pre>
@@ -112,93 +106,117 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            {/* Core Features */}
-            <section id="product" className="py-24 bg-slate-900/30 border-y border-white/5">
+            {/* How It Works */}
+            <section id="how-it-works" className="py-24 bg-slate-900/30 border-y border-white/5">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl font-bold mb-4">From Messy Input to Deterministic Output</h2>
-                        <p className="text-slate-400">Stop wasting engineering hours on manual procurement and documentation. Our agentic workflow engine acts as the translation layer between design intent and factory execution.</p>
+                        <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+                        <p className="text-slate-400">From CAD upload to physically verified assembly, our 3-step process guarantees deterministic output.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         <FeatureCard
-                            icon={<PenTool className="w-6 h-6 text-emerald-400" />}
-                            title="Messy Design Ingestion"
-                            description="Upload unstructured CAD, rough sketches, or text prompts. Our vision models extract geometric constraints and electro-mechanical intent instantly."
+                            icon={<UploadCloud className="w-6 h-6 text-emerald-400" />}
+                            title="Step 1: Ingest & Parse"
+                            description="You upload a CAD assembly. Our engine (powered by constraint assembly graphs) breaks it down into a deterministic 'Rooted Manufacturing Operation Tree.'"
                         />
                         <FeatureCard
-                            icon={<DollarSign className="w-6 h-6 text-green-400" />}
-                            title="Live Techno-Economic Models"
-                            description="We link directly to procurement rails like Lightsail and DigiKey to generate real-time cost estimates and supplier routing before you cut steel."
+                            icon={<Bot className="w-6 h-6 text-emerald-400" />}
+                            title="Step 2: VLA Robotic Execution"
+                            description="No manual labor. Our proprietary translation layer feeds prompt-result pairs directly into off-the-shelf robotic arms powered by advanced Vision-Language-Action models."
                         />
                         <FeatureCard
-                            icon={<Workflow className="w-6 h-6 text-purple-400" />}
-                            title="Execution-Ready Outputs"
-                            description="Automatically generate structured N-ary BOMs and step-by-step assembly instructions. Ship to your CM with zero ambiguity."
+                            icon={<ShieldCheck className="w-6 h-6 text-emerald-400" />}
+                            title="Step 3: Quality Verified & Shipped"
+                            description="The AI visually verifies every step against the CAD constraints. You receive a fully assembled, ISO-compliant joint ready for your robot."
                         />
                     </div>
                 </div>
             </section>
 
-            {/* ICP / Target Audience Section */}
-            <section id="use-cases" className="py-24 relative overflow-hidden">
+            {/* Why Phantom? */}
+            <section id="why-phantom" className="py-24 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="order-2 lg:order-1 relative">
                             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-2xl" />
                             <div className="border border-slate-800 rounded-2xl p-8 bg-slate-900/50 backdrop-blur-sm relative z-10">
                                 <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                                    <Cpu className="text-emerald-500" /> Target: Electro-Mechanical Assemblies
+                                    <Cpu className="text-emerald-500" /> "Why Phantom?"
                                 </h3>
                                 <ul className="space-y-4">
-                                    {[
-                                         "Robotics startups (Series A–C)",
-                                         "Hardware leads managing CM relationships solo",
-                                         "Teams iterating faster than their quote cycle"
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                            <span className="text-slate-300">{item}</span>
-                                        </li>
-                                    ))}
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                                        <div>
+                                            <strong className="text-slate-200 block mb-1">Drop the Legacy CMs</strong>
+                                            <span className="text-slate-400 text-sm">Stop relying on Tier 2/3 contract manufacturers who use chaotic email chains, Excel spreadsheets, and expensive manual labor.</span>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                                        <div>
+                                            <strong className="text-slate-200 block mb-1">Software-Defined Reliability</strong>
+                                            <span className="text-slate-400 text-sm">Because our assembly line is driven by code and AI foundation models, we eliminate human error, missed steps, and "tribal knowledge" loss.</span>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                                        <div>
+                                            <strong className="text-slate-200 block mb-1">Capture Your Margins</strong>
+                                            <span className="text-slate-400 text-sm">Perfect for humanoid robotics, robotic grippers, and advanced aerospace components. You focus on design; we handle the messy physical execution.</span>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Built for robotics hardware teams who are done losing weeks to the CM handoff.</h2>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Stop managing chaos. Start scaling hardware.</h2>
                             <p className="text-lg text-slate-400 mb-6">
-                                Complex actuated assemblies — joints, grippers, drives — break every generic tool. Phantom is purpose-built for the electro-mechanical handoff: from your STEP file to a factory-ready operation tree, in one step.
+                                We've moved beyond software to solve the physical problem. Phantom provides reliable, automated assembly for the most complex mechatronic joints.
                             </p>
-                            <div className="flex items-center gap-4 text-sm text-slate-300 font-medium">
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Actuated Joints</div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Harmonic Drives</div>
-                                <div className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700">Multi-DOF Grippers</div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* The Pipeline CTA */}
-            <section className="py-24 border-t border-white/5 relative">
+            {/* The Pilot CTA */}
+            <section id="pilot" className="py-24 border-t border-white/5 relative">
                 <div className="absolute inset-0 bg-emerald-900/10" />
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
                     <Box className="w-12 h-12 text-emerald-500 mx-auto mb-6" />
-                    <h2 className="text-4xl font-bold mb-6">Ready to compile your hardware?</h2>
+                    <h2 className="text-4xl font-bold mb-6">Join the Actuated Joint Pilot.</h2>
                     <p className="text-xl text-slate-400 mb-10">
-                        Join the private beta and start turning messy ideas into procurement-ready production plans.
+                        We are currently taking on early partners building humanoid joints, harmonic drives, and multi-DOF grippers. Let us assemble your hardest sub-assembly for free to prove our precision.
                     </p>
                     <div className="flex items-center justify-center gap-4">
-                        <Link to="/demo" className="bg-white text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                            Try the Demo Now
-                        </Link>
+                        <button className="bg-white text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                            Apply for the Pilot
+                        </button>
                     </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="py-8 border-t border-white/10 text-center text-sm text-slate-500">
-                <p>© {new Date().getFullYear()} Phantom Assembly, Inc. Based in Cambridge, MA.</p>
+            <footer className="py-12 border-t border-white/10 bg-slate-950">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-2">
+                        <img src="/logo.jpg" alt="Phantom Assembly Logo" className="w-6 h-6 rounded-sm object-contain mix-blend-screen" />
+                        <span className="text-lg font-bold tracking-tight text-slate-200">Phantom Assembly</span>
+                    </div>
+
+                    <div className="flex gap-8 text-sm font-medium text-slate-400">
+                        <a href="#" className="hover:text-white transition-colors">Technology</a>
+                        <a href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                            Careers <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">We're hiring AI/Robotics Engineers!</span>
+                        </a>
+                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                        <a href="#" className="hover:text-white transition-colors">Contact Us</a>
+                    </div>
+
+                    <div className="text-sm text-slate-500">
+                        © {new Date().getFullYear()} Phantom Assembly, Inc. Based in Cambridge, MA.
+                    </div>
+                </div>
             </footer>
         </div>
     );
