@@ -15,12 +15,12 @@ import { Link } from 'react-router-dom';
 export default function LandingPage() {
     const [terminalText, setTerminalText] = useState('');
     const fullText = `> Initializing Phantom VLA Model...
-> Ingesting CAD: "Actuated_Joint_v7.STEP"
+> Ingesting SOPs: "Pepperoni_Pizza_Prep_v2.json"
 > Generating Rooted Manufacturing Operation Tree...
-> Mapping constraints to robotic execution paths...
-> Compiling prompt-result pairs for arm sequence...
-> Simulating snap-fit assembly...
-> SUCCESS: Assembly sequence verified. Ready for execution.`;
+> Mapping recipe constraints: [Press Dough] -> [Apply Sauce]
+> Adjusting for variable texture: sauce viscosity detected
+> Simulating adaptive food robotics sequence...
+> SUCCESS: Prep and packaging sequence verified. Ready for execution.`;
 
     // Typing effect for the hero terminal
     useEffect(() => {
@@ -67,20 +67,20 @@ export default function LandingPage() {
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
                             <Zap className="w-4 h-4" />
-                            <span>The Protolabs for Mechatronic Assembly</span>
+                            <span>Focus on restaurant operations, not staffing</span>
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                            The API for <br />
+                            The Software-Defined <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
-                                Mechatronic Assembly.
+                                Labor Force for QSR.
                             </span>
                         </h1>
                         <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-                            Don't write another PDF traveler. Upload your CAD, and our VLA-powered robotic microfactory will assemble and ship your complex actuated joints in 3 days.
+                            Deploy modular, $10k robotic work cells that handle prep, portioning, and packaging. Achieve ROI in 30 days and stabilize your back-of-house operations.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                                Upload CAD for Instant Quote <ArrowRight className="w-4 h-4" />
+                                Calculate Your Franchise ROI <ArrowRight className="w-4 h-4" />
                             </button>
                             <Link to="/demo" className="flex items-center justify-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all border border-slate-700">
                                 Watch the Microfactory in Action <Play className="w-4 h-4 fill-current" />
@@ -111,24 +111,24 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-                        <p className="text-slate-400">From CAD upload to physically verified assembly, our 3-step process guarantees deterministic output.</p>
+                        <p className="text-slate-400">From SOP ingestion to visually verified prep, our 3-step process guarantees deterministic output.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         <FeatureCard
                             icon={<UploadCloud className="w-6 h-6 text-emerald-400" />}
-                            title="Step 1: Ingest & Parse"
-                            description="You upload a CAD assembly. Our engine (powered by constraint assembly graphs) breaks it down into a deterministic 'Rooted Manufacturing Operation Tree.'"
+                            title="Step 1: Ingest SOPs"
+                            description="We convert your kitchen recipes and manual tasks into a deterministic 'Rooted Manufacturing Operation Tree' that maps every movement."
                         />
                         <FeatureCard
                             icon={<Bot className="w-6 h-6 text-emerald-400" />}
-                            title="Step 2: VLA Robotic Execution"
-                            description="No manual labor. Our proprietary translation layer feeds prompt-result pairs directly into off-the-shelf robotic arms powered by advanced Vision-Language-Action models."
+                            title="Step 2: Adaptive Food Robotics"
+                            description="Our Vision-Language-Action (VLA) models handle variable textures dynamically—from pizza dough stretch to sauce viscosity."
                         />
                         <FeatureCard
                             icon={<ShieldCheck className="w-6 h-6 text-emerald-400" />}
-                            title="Step 3: Quality Verified & Shipped"
-                            description="The AI visually verifies every step against the CAD constraints. You receive a fully assembled, ISO-compliant joint ready for your robot."
+                            title="Step 3: Verified Prep & Packaging"
+                            description="The AI visually confirms every action, ensuring perfect box-folds, portion accuracy, and presentation before hand-off."
                         />
                     </div>
                 </div>
@@ -148,8 +148,8 @@ export default function LandingPage() {
                                     <li className="flex items-start gap-3">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                                         <div>
-                                            <strong className="text-slate-200 block mb-1">Drop the Legacy CMs</strong>
-                                            <span className="text-slate-400 text-sm">Stop relying on Tier 2/3 contract manufacturers who use chaotic email chains, Excel spreadsheets, and expensive manual labor.</span>
+                                            <strong className="text-slate-200 block mb-1">Beat the Labor Crunch</strong>
+                                            <span className="text-slate-400 text-sm">Achieve a 15% reduction in total labor costs. Our units can operate minimally during non-peak hours to keep prep running constantly without staffing overhead.</span>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
@@ -162,17 +162,17 @@ export default function LandingPage() {
                                     <li className="flex items-start gap-3">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                                         <div>
-                                            <strong className="text-slate-200 block mb-1">Capture Your Margins</strong>
-                                            <span className="text-slate-400 text-sm">Perfect for humanoid robotics, robotic grippers, and advanced aerospace components. You focus on design; we handle the messy physical execution.</span>
+                                            <strong className="text-slate-200 block mb-1">Modular Retrofitting</strong>
+                                            <span className="text-slate-400 text-sm">Unlike legacy $90k pizza machines, our $10k Phantom units fit seamlessly inside your existing kitchen footprint, no heavy renovation required.</span>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Stop managing chaos. Start scaling hardware.</h2>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Protect your franchise profitability.</h2>
                             <p className="text-lg text-slate-400 mb-6">
-                                We've moved beyond software to solve the physical problem. Phantom provides reliable, automated assembly for the most complex mechatronic joints.
+                                Rising labor costs and high turnover are existential threats. Phantom's modular units provide consistent, reliable output so you can focus on customer experience.
                             </p>
                         </div>
                     </div>
@@ -184,13 +184,13 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-emerald-900/10" />
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
                     <Box className="w-12 h-12 text-emerald-500 mx-auto mb-6" />
-                    <h2 className="text-4xl font-bold mb-6">Join the Actuated Joint Pilot.</h2>
+                    <h2 className="text-4xl font-bold mb-6">Join the QSR Pilot Program.</h2>
                     <p className="text-xl text-slate-400 mb-10">
-                        We are currently taking on early partners building humanoid joints, harmonic drives, and multi-DOF grippers. Let us assemble your hardest sub-assembly for free to prove our precision.
+                        We are currently taking on early partners including pizza franchises and fast-casual chains. Let us set up a robotic prep cell in your kitchen to prove ROI in 30 days.
                     </p>
                     <div className="flex items-center justify-center gap-4">
                         <button className="bg-white text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                            Apply for the Pilot
+                            Apply for the QSR Pilot Program
                         </button>
                     </div>
                 </div>

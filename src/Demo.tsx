@@ -54,7 +54,7 @@ export default function Demo() {
 
   useEffect(() => {
     if (appState === 'generating') {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         setGenerationStep(prev => {
           if (prev >= steps.length - 1) {
             clearInterval(interval);
