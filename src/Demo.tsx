@@ -79,7 +79,7 @@ export default function Demo() {
       {/* Header */}
       <header className="h-16 border-b border-white/5 backdrop-blur-xl flex items-center px-6 z-20 shrink-0" style={{ backgroundColor: 'rgba(8,15,26,0.6)' }}>
         <div className="flex items-center gap-2">
-          <img src="/logo.jpg" alt="Rush Robotics Logo" className="h-6 w-auto object-contain" />
+          <img src="/logo.png" alt="Rush Robotics Logo" className="h-6 w-auto object-contain" />
         </div>
       </header>
 
