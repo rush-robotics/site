@@ -1,236 +1,381 @@
-import React, { useState, useEffect } from 'react';
-import {
-    Cpu,
-    Zap,
-    ArrowRight,
-    Box,
-    CheckCircle2,
-    Play,
-    ShieldCheck,
-    Bot,
-    UploadCloud
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight, CheckCircle2, MapPin, Phone, TrendingDown, Clock, Shield, ChevronRight } from 'lucide-react';
+
+const NAV = '#080f1a';
+const BG = '#080f1a';
+const CARD = '#0f1e38';
+const BORDER = '#1a3358';
+const ORANGE = '#ea580c';
 
 export default function LandingPage() {
-    const [terminalText, setTerminalText] = useState('');
-    const fullText = `> Initializing Phantom VLA Model...
-> Ingesting SOPs: "Pepperoni_Pizza_Prep_v2.json"
-> Generating Rooted Manufacturing Operation Tree...
-> Mapping recipe constraints: [Press Dough] -> [Apply Sauce]
-> Adjusting for variable texture: sauce viscosity detected
-> Simulating adaptive food robotics sequence...
-> SUCCESS: Prep and packaging sequence verified. Ready for execution.`;
+    const [savings, setSavings] = useState(0);
 
-    // Typing effect for the hero terminal
+    // Animate the savings counter on mount
     useEffect(() => {
-        let i = 0;
-        const typingInterval = setInterval(() => {
-            if (i < fullText.length) {
-                setTerminalText(fullText.slice(0, i + 1));
-                i++;
-            } else {
-                clearInterval(typingInterval);
-            }
-        }, 30);
-        return () => clearInterval(typingInterval);
+        const target = 2880;
+        const duration = 1800;
+        const start = performance.now();
+        const tick = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setSavings(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+        const delay = setTimeout(() => requestAnimationFrame(tick), 600);
+        return () => clearTimeout(delay);
     }, []);
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
-            {/* Navigation */}
-            <nav className="fixed w-full z-50 top-0 border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <div className="flex items-center gap-2 block">
-                        <img src="/logo.jpg" alt="Phantom Assembly Logo" className="w-6 h-6 rounded-sm object-contain mix-blend-screen" />
-                        <span className="text-xl font-bold tracking-tight">Phantom Assembly</span>
-                    </div>
+        <div className="min-h-screen text-slate-50 font-sans" style={{ backgroundColor: BG }}>
+
+            {/* Nav */}
+            <nav className="fixed w-full z-50 top-0 border-b border-white/8 backdrop-blur-md" style={{ backgroundColor: `${NAV}e0` }}>
+                <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <img src="/logo.jpg" alt="Rush Robotics" className="h-7 w-auto object-contain" />
                     <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
                         <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
-                        <a href="#why-phantom" className="hover:text-white transition-colors">Why Phantom?</a>
-                        <a href="#pilot" className="hover:text-white transition-colors">Pilot Program</a>
+                        <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+                        <a href="#contact" className="hover:text-white transition-colors">Contact</a>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <button className="bg-white text-black px-4 py-2 rounded-md text-sm font-semibold hover:bg-slate-200 transition-colors">
-                            Contact Us
-                        </button>
-                    </div>
+                    <a href="#contact" className="text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" style={{ backgroundColor: ORANGE }}
+                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c2410c')}
+                        onMouseLeave={e => (e.currentTarget.style.backgroundColor = ORANGE)}>
+                        Get a Free Assessment
+                    </a>
                 </div>
             </nav>
 
-            {/* Hero Section */}
-            <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-                {/* Abstract Background Glow */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/20 blur-[120px] rounded-full pointer-events-none" />
+            {/* Hero */}
+            <section className="relative pt-36 pb-24 lg:pt-52 lg:pb-36 overflow-hidden">
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[140px]" style={{ backgroundColor: 'rgba(26,51,88,0.35)' }} />
+                    <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] rounded-full blur-[120px]" style={{ backgroundColor: 'rgba(234,88,12,0.08)' }} />
+                </div>
 
-                <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-                    <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
-                            <Zap className="w-4 h-4" />
-                            <span>Focus on restaurant operations, not staffing</span>
+                <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
+                    <div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-8 border" style={{ backgroundColor: 'rgba(234,88,12,0.08)', borderColor: 'rgba(234,88,12,0.2)', color: '#fb923c' }}>
+                            <MapPin className="w-3.5 h-3.5" />
+                            D.C., Maryland & Virginia
                         </div>
-                        <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                            The Software-Defined <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
-                                Labor Force for QSR.
-                            </span>
+                        <h1 className="text-5xl lg:text-[3.75rem] font-extrabold leading-[1.08] tracking-tight mb-6">
+                            Stop paying for work<br />
+                            <span style={{ color: ORANGE }}>a robot can do.</span>
                         </h1>
-                        <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-                            Deploy modular, $10k robotic work cells that handle prep, portioning, and packaging. Achieve ROI in 30 days and stabilize your back-of-house operations.
+                        <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: '#94a3b8' }}>
+                            We map your kitchen using your existing cameras, find the right robot, and handle the entire installation. Then we monitor everything so you never have to think about it.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                                Calculate Your Franchise ROI <ArrowRight className="w-4 h-4" />
-                            </button>
-                            <Link to="/demo" className="flex items-center justify-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all border border-slate-700">
-                                Watch the Microfactory in Action <Play className="w-4 h-4 fill-current" />
-                            </Link>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                            <a href="#contact"
+                                className="inline-flex items-center justify-center gap-2 text-white font-bold px-7 py-3.5 rounded-xl transition-all"
+                                style={{ backgroundColor: ORANGE, boxShadow: '0 0 28px rgba(234,88,12,0.3)' }}
+                                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c2410c')}
+                                onMouseLeave={e => (e.currentTarget.style.backgroundColor = ORANGE)}>
+                                Book a Free Site Visit <ArrowRight className="w-4 h-4" />
+                            </a>
+                            <a href="#how-it-works"
+                                className="inline-flex items-center justify-center gap-2 font-semibold px-7 py-3.5 rounded-xl border transition-colors text-slate-300 hover:text-white"
+                                style={{ borderColor: BORDER, backgroundColor: 'rgba(26,51,88,0.3)' }}>
+                                See how it works
+                            </a>
                         </div>
                     </div>
 
-                    {/* Hero Terminal UI */}
-                    <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-900/50 shadow-2xl backdrop-blur-sm">
-                        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-950/50">
-                            <div className="flex gap-1.5">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    {/* Monthly Savings Card */}
+                    <div className="rounded-2xl p-6 shadow-2xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+                        {/* Card header */}
+                        <div className="flex items-center justify-between mb-6 pb-5" style={{ borderBottom: `1px solid ${BORDER}` }}>
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#64748b' }}>Monthly Site Report</p>
+                                <p className="font-semibold text-slate-200">Arlington, VA — Location #04</p>
                             </div>
-                            <span className="text-xs font-mono text-slate-500 ml-2">microfactory.exe — Phantom Assembly</span>
+                            <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(34,197,94,0.12)', color: '#4ade80', border: '1px solid rgba(34,197,94,0.2)' }}>
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                All Systems Active
+                            </span>
                         </div>
-                        <div className="p-6 h-[320px] overflow-y-auto font-mono text-sm text-emerald-400 leading-relaxed">
-                            <pre className="whitespace-pre-wrap">{terminalText}</pre>
-                            <span className="animate-pulse">_</span>
-                        </div>
-                    </div>
-                </div>
-            </header>
 
-            {/* How It Works */}
-            <section id="how-it-works" className="py-24 bg-slate-900/30 border-y border-white/5">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-                        <p className="text-slate-400">From SOP ingestion to visually verified prep, our 3-step process guarantees deterministic output.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <FeatureCard
-                            icon={<UploadCloud className="w-6 h-6 text-emerald-400" />}
-                            title="Step 1: Ingest SOPs"
-                            description="We convert your kitchen recipes and manual tasks into a deterministic 'Rooted Manufacturing Operation Tree' that maps every movement."
-                        />
-                        <FeatureCard
-                            icon={<Bot className="w-6 h-6 text-emerald-400" />}
-                            title="Step 2: Adaptive Food Robotics"
-                            description="Our Vision-Language-Action (VLA) models handle variable textures dynamically—from pizza dough stretch to sauce viscosity."
-                        />
-                        <FeatureCard
-                            icon={<ShieldCheck className="w-6 h-6 text-emerald-400" />}
-                            title="Step 3: Verified Prep & Packaging"
-                            description="The AI visually confirms every action, ensuring perfect box-folds, portion accuracy, and presentation before hand-off."
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* Why Phantom? */}
-            <section id="why-phantom" className="py-24 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 lg:order-1 relative">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-2xl" />
-                            <div className="border border-slate-800 rounded-2xl p-8 bg-slate-900/50 backdrop-blur-sm relative z-10">
-                                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                                    <Cpu className="text-emerald-500" /> "Why Phantom?"
-                                </h3>
-                                <ul className="space-y-4">
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                        <div>
-                                            <strong className="text-slate-200 block mb-1">Beat the Labor Crunch</strong>
-                                            <span className="text-slate-400 text-sm">Achieve a 15% reduction in total labor costs. Our units can operate minimally during non-peak hours to keep prep running constantly without staffing overhead.</span>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                        <div>
-                                            <strong className="text-slate-200 block mb-1">Software-Defined Reliability</strong>
-                                            <span className="text-slate-400 text-sm">Because our assembly line is driven by code and AI foundation models, we eliminate human error, missed steps, and "tribal knowledge" loss.</span>
-                                        </div>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                        <div>
-                                            <strong className="text-slate-200 block mb-1">Modular Retrofitting</strong>
-                                            <span className="text-slate-400 text-sm">Unlike legacy $90k pizza machines, our $10k Phantom units fit seamlessly inside your existing kitchen footprint, no heavy renovation required.</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="order-1 lg:order-2">
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Protect your franchise profitability.</h2>
-                            <p className="text-lg text-slate-400 mb-6">
-                                Rising labor costs and high turnover are existential threats. Phantom's modular units provide consistent, reliable output so you can focus on customer experience.
+                        {/* Big savings number */}
+                        <div className="mb-6 p-5 rounded-xl" style={{ backgroundColor: 'rgba(234,88,12,0.08)', border: '1px solid rgba(234,88,12,0.15)' }}>
+                            <p className="text-sm font-medium mb-1" style={{ color: '#fb923c' }}>Estimated Labor Savings This Month</p>
+                            <p className="text-5xl font-extrabold tracking-tight text-white">
+                                ${savings.toLocaleString()}
                             </p>
                         </div>
+
+                        {/* Stats grid */}
+                        <div className="grid grid-cols-3 gap-3 mb-6">
+                            {[
+                                { label: 'Hours Automated', value: '240 hrs' },
+                                { label: 'Robot Uptime', value: '99.8%' },
+                                { label: 'Open Alerts', value: '0' },
+                            ].map(({ label, value }) => (
+                                <div key={label} className="p-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(26,51,88,0.5)' }}>
+                                    <p className="text-lg font-bold text-white">{value}</p>
+                                    <p className="text-xs mt-0.5" style={{ color: '#64748b' }}>{label}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Robot status */}
+                        <div className="space-y-2">
+                            {[
+                                { name: 'Miso Flippy 2 — Fryer Station', status: 'Running' },
+                                { name: 'CCTV Monitoring — 4 cameras', status: 'Active' },
+                                { name: 'Remote Support', status: 'On call' },
+                            ].map(({ name, status }) => (
+                                <div key={name} className="flex items-center justify-between py-2.5 px-3 rounded-lg" style={{ backgroundColor: 'rgba(26,51,88,0.3)' }}>
+                                    <span className="text-sm text-slate-300">{name}</span>
+                                    <span className="text-xs font-semibold" style={{ color: '#4ade80' }}>{status}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* The Pilot CTA */}
-            <section id="pilot" className="py-24 border-t border-white/5 relative">
-                <div className="absolute inset-0 bg-emerald-900/10" />
-                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                    <Box className="w-12 h-12 text-emerald-500 mx-auto mb-6" />
-                    <h2 className="text-4xl font-bold mb-6">Join the QSR Pilot Program.</h2>
-                    <p className="text-xl text-slate-400 mb-10">
-                        We are currently taking on early partners including pizza franchises and fast-casual chains. Let us set up a robotic prep cell in your kitchen to prove ROI in 30 days.
-                    </p>
-                    <div className="flex items-center justify-center gap-4">
-                        <button className="bg-white text-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                            Apply for the QSR Pilot Program
-                        </button>
+            {/* Stats bar */}
+            <div style={{ backgroundColor: CARD, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+                <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    {[
+                        { value: '$1,000', label: 'One-time setup fee' },
+                        { value: '$100 / mo', label: 'Per location, all-in' },
+                        { value: '24 / 7', label: 'Monitoring & support' },
+                        { value: 'DMV only', label: 'Focused, local service' },
+                    ].map(({ value, label }) => (
+                        <div key={label}>
+                            <p className="text-2xl font-extrabold mb-1" style={{ color: ORANGE }}>{value}</p>
+                            <p className="text-sm text-slate-500">{label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Problem + Value */}
+            <section className="py-28">
+                <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <h2 className="text-4xl font-extrabold leading-tight mb-6 tracking-tight">
+                            Labor is your biggest cost.<br />
+                            <span className="text-slate-400 font-normal">It doesn't have to be.</span>
+                        </h2>
+                        <p className="text-slate-400 leading-relaxed mb-8">
+                            Between rising wages, constant turnover, and no-shows, staffing a restaurant is harder than ever. Automation technology that could fix this already exists — the problem is nobody makes it easy to actually get it running in your kitchen.
+                        </p>
+                        <p className="text-slate-300 leading-relaxed">
+                            That's what we do. Rush Robotics is a local integration service — we handle everything from camera setup to robot installation to ongoing support, so you can focus on your customers, not your tech stack.
+                        </p>
                     </div>
+                    <div className="grid gap-4">
+                        {[
+                            { icon: <TrendingDown className="w-5 h-5" style={{ color: ORANGE }} />, title: 'Cut labor overhead', body: 'Automate repetitive back-of-house tasks. Run leaner during off-peak hours without cutting service quality.' },
+                            { icon: <Clock className="w-5 h-5" style={{ color: ORANGE }} />, title: 'No learning curve for your team', body: 'We handle setup, training, and troubleshooting. Your staff doesn\'t need to become robot technicians.' },
+                            { icon: <Shield className="w-5 h-5" style={{ color: ORANGE }} />, title: 'Always-on monitoring', body: 'We watch your CCTV feeds and robot health 24/7. If something\'s off, we catch it before it becomes your problem.' },
+                        ].map(({ icon, title, body }) => (
+                            <div key={title} className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+                                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(234,88,12,0.1)' }}>
+                                    {icon}
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-slate-200 mb-1">{title}</p>
+                                    <p className="text-sm text-slate-400 leading-relaxed">{body}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section id="how-it-works" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: 'rgba(15,30,56,0.35)' }} className="py-28">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="max-w-xl mb-16">
+                        <h2 className="text-4xl font-extrabold tracking-tight mb-4">What working with us looks like</h2>
+                        <p className="text-slate-400">From first call to live robot, we handle every step. Most locations are up and running within two weeks.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            {
+                                n: '01',
+                                title: 'We come to your location',
+                                body: 'We visit your restaurant, review your existing cameras, and map your kitchen workflow. Free, no commitment.',
+                            },
+                            {
+                                n: '02',
+                                title: 'We find the right robot',
+                                body: 'Using a digital model of your kitchen, we test options from Miso Robotics, Serve Robotics, and Pickle Robotics before anything ships.',
+                            },
+                            {
+                                n: '03',
+                                title: 'We install, you get back to work',
+                                body: 'Our team handles installation and staff walkthroughs. After that, we\'re your 24/7 support line for everything — cameras included.',
+                            },
+                        ].map(({ n, title, body }) => (
+                            <div key={n} className="relative p-7 rounded-2xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+                                <p className="text-6xl font-black mb-6 select-none" style={{ color: 'rgba(26,51,88,0.8)' }}>{n}</p>
+                                <h3 className="text-lg font-bold mb-3 text-slate-100">{title}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed">{body}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Partners */}
+            <section className="py-28">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="max-w-xl mb-14">
+                        <h2 className="text-4xl font-extrabold tracking-tight mb-4">Technology we bring to your kitchen</h2>
+                        <p className="text-slate-400">We partner with the leading commercial robotics companies — and take on all the complexity of making their products work in your specific restaurant.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-5">
+                        {[
+                            { name: 'Miso Robotics', tag: 'Kitchen Automation', body: 'AI-powered fry stations and back-of-house automation designed for high-volume operations.' },
+                            { name: 'Serve Robotics', tag: 'Sidewalk Delivery', body: 'Autonomous outdoor delivery robots that expand your delivery area with zero added headcount.' },
+                            { name: 'Pickle Robotics', tag: 'Dishwashing & Prep', body: 'Tackles one of the most exhausting back-of-house jobs — so your team doesn\'t have to.' },
+                        ].map(({ name, tag, body }) => (
+                            <div key={name} className="p-6 rounded-2xl group cursor-default transition-all duration-200" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}
+                                onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(234,88,12,0.35)')}
+                                onMouseLeave={e => (e.currentTarget.style.borderColor = BORDER)}>
+                                <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: ORANGE }}>{tag}</p>
+                                <h3 className="text-xl font-bold mb-3 text-slate-100">{name}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed">{body}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing */}
+            <section id="pricing" className="py-28" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: 'rgba(15,30,56,0.35)' }}>
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="max-w-xl mb-14">
+                        <h2 className="text-4xl font-extrabold tracking-tight mb-4">Straightforward pricing</h2>
+                        <p className="text-slate-400">No per-robot licensing fees. No surprise charges. Just two line items.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
+                        <div className="p-8 rounded-2xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+                            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#64748b' }}>One-Time</p>
+                            <p className="text-5xl font-extrabold mb-1 text-white">$1,000</p>
+                            <p className="text-slate-400 mb-8">Integration fee</p>
+                            <ul className="space-y-3">
+                                {['On-site kitchen audit & camera review', 'Digital twin + robot selection & simulation', 'Full installation & configuration', 'Staff onboarding'].map(f => (
+                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                        <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: ORANGE }} />
+                                        {f}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="p-8 rounded-2xl" style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid rgba(234,88,12,0.35)` }}>
+                            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: ORANGE }}>Per Location / Month</p>
+                            <p className="text-5xl font-extrabold mb-1 text-white">$100</p>
+                            <p className="text-slate-400 mb-8">Ongoing monitoring & support</p>
+                            <ul className="space-y-3">
+                                {['24/7 CCTV system monitoring', 'Robot health & uptime alerts', 'Remote diagnostics & support', 'Monthly performance summary'].map(f => (
+                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                        <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: ORANGE }} />
+                                        {f}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p className="text-slate-500 text-sm mt-8">Hardware pricing varies by robot model. We provide a detailed quote at your free site assessment.</p>
+                </div>
+            </section>
+
+            {/* Contact CTA */}
+            <section id="contact" className="py-28">
+                <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 className="text-4xl font-extrabold tracking-tight mb-5">Let's visit your restaurant.</h2>
+                        <p className="text-slate-400 leading-relaxed mb-8">
+                            We work exclusively with restaurants in D.C., Maryland, and Virginia. Reach out and we'll schedule a free walkthrough — no pitch decks, no pressure.
+                        </p>
+                        <div className="flex items-center gap-3 text-slate-300">
+                            <Phone className="w-4 h-4 text-orange-500" />
+                            <span className="text-sm">We'll call you back within one business day.</span>
+                        </div>
+                    </div>
+
+                    <ContactForm />
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="py-12 border-t border-white/10 bg-slate-950">
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-2">
-                        <img src="/logo.jpg" alt="Phantom Assembly Logo" className="w-6 h-6 rounded-sm object-contain mix-blend-screen" />
-                        <span className="text-lg font-bold tracking-tight text-slate-200">Phantom Assembly</span>
-                    </div>
-
-                    <div className="flex gap-8 text-sm font-medium text-slate-400">
-                        <a href="#" className="hover:text-white transition-colors">Technology</a>
-                        <a href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-                            Careers <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">We're hiring AI/Robotics Engineers!</span>
-                        </a>
-                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-white transition-colors">Contact Us</a>
-                    </div>
-
-                    <div className="text-sm text-slate-500">
-                        © {new Date().getFullYear()} Phantom Assembly, Inc. Based in Cambridge, MA.
-                    </div>
+            <footer className="py-8 border-t border-white/8" style={{ backgroundColor: NAV }}>
+                <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <img src="/logo.jpg" alt="Rush Robotics" className="h-6 w-auto object-contain" />
+                    <p className="text-sm text-slate-600">© {new Date().getFullYear()} Rush Robotics · D.C., Maryland & Virginia</p>
                 </div>
             </footer>
         </div>
     );
 }
 
-// Helper Component for Features
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
-    return (
-        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors">
-            <div className="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6">
-                {icon}
+function ContactForm() {
+    const [status, setStatus] = useState<'idle' | 'sent'>('idle');
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('sent');
+    };
+
+    if (status === 'sent') {
+        return (
+            <div className="flex flex-col items-center justify-center p-10 rounded-2xl text-center" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+                <CheckCircle2 className="w-12 h-12 mb-4" style={{ color: ORANGE }} />
+                <p className="text-xl font-bold mb-2">We'll be in touch soon.</p>
+                <p className="text-slate-400 text-sm">Expect a call or email within one business day.</p>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-slate-200">{title}</h3>
-            <p className="text-slate-400 leading-relaxed">{description}</p>
-        </div>
+        );
+    }
+
+    return (
+        <form ref={formRef} onSubmit={handleSubmit} className="p-7 rounded-2xl space-y-4" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
+            <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label className="block text-xs font-medium text-slate-400 mb-1.5">Your name</label>
+                    <input required type="text" placeholder="Jane Smith" className="w-full px-4 py-2.5 rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"
+                        style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid ${BORDER}` }}
+                        onFocus={e => (e.currentTarget.style.borderColor = ORANGE)}
+                        onBlur={e => (e.currentTarget.style.borderColor = BORDER)} />
+                </div>
+                <div>
+                    <label className="block text-xs font-medium text-slate-400 mb-1.5">Phone or email</label>
+                    <input required type="text" placeholder="(202) 555-0100" className="w-full px-4 py-2.5 rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"
+                        style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid ${BORDER}` }}
+                        onFocus={e => (e.currentTarget.style.borderColor = ORANGE)}
+                        onBlur={e => (e.currentTarget.style.borderColor = BORDER)} />
+                </div>
+            </div>
+            <div>
+                <label className="block text-xs font-medium text-slate-400 mb-1.5">Restaurant name & location</label>
+                <input required type="text" placeholder="Joe's Burgers — Capitol Hill, D.C." className="w-full px-4 py-2.5 rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"
+                    style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid ${BORDER}` }}
+                    onFocus={e => (e.currentTarget.style.borderColor = ORANGE)}
+                    onBlur={e => (e.currentTarget.style.borderColor = BORDER)} />
+            </div>
+            <div>
+                <label className="block text-xs font-medium text-slate-400 mb-1.5">Biggest operational headache (optional)</label>
+                <textarea rows={3} placeholder="e.g. fryer coverage during lunch rush, dishwashing..." className="w-full px-4 py-2.5 rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none transition-colors resize-none"
+                    style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid ${BORDER}` }}
+                    onFocus={e => (e.currentTarget.style.borderColor = ORANGE)}
+                    onBlur={e => (e.currentTarget.style.borderColor = BORDER)} />
+            </div>
+            <button type="submit" className="w-full flex items-center justify-center gap-2 text-white font-semibold py-3 rounded-lg transition-colors"
+                style={{ backgroundColor: ORANGE }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c2410c')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = ORANGE)}>
+                Request a Free Site Visit <ChevronRight className="w-4 h-4" />
+            </button>
+        </form>
     );
 }
