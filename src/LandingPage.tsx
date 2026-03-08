@@ -29,7 +29,7 @@ export default function LandingPage() {
         <div className="min-h-screen text-slate-50 font-sans" style={{ backgroundColor: BG }}>
 
             {/* Nav */}
-            <nav className="fixed w-full z-50 top-0 border-b border-white/8 backdrop-blur-md" style={{ backgroundColor: `${NAV}e0` }}>
+            <nav className="fixed w-full z-50 top-0 border-b backdrop-blur-md" style={{ backgroundColor: `${NAV}e0`, borderColor: BORDER }}>
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
                     <img src="/logo.png" alt="Rush Robotics" className="h-7 w-auto object-contain" />
                     <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
@@ -309,7 +309,7 @@ export default function LandingPage() {
             </section>
 
             {/* Footer */}
-            <footer className="py-8 border-t border-white/8" style={{ backgroundColor: NAV }}>
+            <footer className="py-8 border-t" style={{ backgroundColor: NAV, borderColor: BORDER }}>
                 <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <img src="/logo.png" alt="Rush Robotics" className="h-6 w-auto object-contain" />
                     <p className="text-sm text-slate-600">© {new Date().getFullYear()} Rush Robotics · D.C., Maryland & Virginia</p>
