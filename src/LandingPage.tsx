@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, CheckCircle2, MapPin, Phone, TrendingDown, Clock, Shield } from 'lucide-react';
 
-const NAV = '#080f1a';
-const BG = '#080f1a';
-const CARD = '#0f1e38';
-const BORDER = '#1a3358';
+const NAV = '#ffffff';
+const BG = '#f8fafc';
+const CARD = '#ffffff';
+const BORDER = '#e2e8f0';
 const ORANGE = '#ea580c';
 
 export default function LandingPage() {
@@ -26,18 +26,18 @@ export default function LandingPage() {
     }, []);
 
     return (
-        <div className="min-h-screen text-slate-50 font-sans" style={{ backgroundColor: BG }}>
+        <div className="min-h-screen text-slate-900 font-sans" style={{ backgroundColor: BG }}>
 
             {/* Nav */}
             <nav className="fixed w-full z-50 top-0 border-b backdrop-blur-md" style={{ backgroundColor: `${NAV}e0`, borderColor: BORDER }}>
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <img src="/logo.png" alt="Rush Robotics" className="h-7 w-auto object-contain" />
+                    <img src="/logo-dark.png" alt="Rush Robotics" className="h-7 w-auto object-contain" />
                     <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-                        <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
-                        <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-                        <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+                        <a href="#how-it-works" className="hover:text-slate-900 transition-colors">How It Works</a>
+                        <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
+                        <a href="#contact" className="hover:text-slate-900 transition-colors">Contact</a>
                     </div>
-                    <a href="#contact" className="text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" style={{ backgroundColor: ORANGE }}
+                    <a href="#contact" className="text-slate-900 text-sm font-semibold px-4 py-2 rounded-lg transition-colors" style={{ backgroundColor: ORANGE }}
                         onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c2410c')}
                         onMouseLeave={e => (e.currentTarget.style.backgroundColor = ORANGE)}>
                         Get a Free Assessment
@@ -48,13 +48,13 @@ export default function LandingPage() {
             {/* Hero */}
             <section className="relative pt-36 pb-24 lg:pt-52 lg:pb-36 overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[140px]" style={{ backgroundColor: 'rgba(26,51,88,0.35)' }} />
-                    <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] rounded-full blur-[120px]" style={{ backgroundColor: 'rgba(234,88,12,0.08)' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[140px]" style={{ backgroundColor: 'rgba(59,130,246,0.15)' }} />
+                    <div className="absolute top-1/3 right-1/4 w-[400px] h-[300px] rounded-full blur-[120px]" style={{ backgroundColor: 'rgba(236,72,153,0.1)' }} />
                 </div>
 
                 <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-8 border" style={{ backgroundColor: 'rgba(234,88,12,0.08)', borderColor: 'rgba(234,88,12,0.2)', color: '#fb923c' }}>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-8 border" style={{ backgroundColor: 'rgba(236,72,153,0.1)', borderColor: 'rgba(234,88,12,0.2)', color: '#fb923c' }}>
                             <MapPin className="w-3.5 h-3.5" />
                             D.C., Maryland & Virginia
                         </div>
@@ -62,20 +62,20 @@ export default function LandingPage() {
                             Stop paying for work<br />
                             <span style={{ color: ORANGE }}>a robot can do.</span>
                         </h1>
-                        <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: '#94a3b8' }}>
+                        <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: '#475569' }}>
                             We map your kitchen using your existing cameras, find the right robot, and handle the entire installation. Then we monitor everything so you never have to think about it.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
                             <a href="#contact"
-                                className="inline-flex items-center justify-center gap-2 text-white font-bold px-7 py-3.5 rounded-xl transition-all"
+                                className="inline-flex items-center justify-center gap-2 text-slate-900 font-bold px-7 py-3.5 rounded-xl transition-all"
                                 style={{ backgroundColor: ORANGE, boxShadow: '0 0 28px rgba(234,88,12,0.3)' }}
                                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c2410c')}
                                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = ORANGE)}>
                                 Book a Free Site Visit <ArrowRight className="w-4 h-4" />
                             </a>
                             <a href="#how-it-works"
-                                className="inline-flex items-center justify-center gap-2 font-semibold px-7 py-3.5 rounded-xl border transition-colors text-slate-300 hover:text-white"
-                                style={{ borderColor: BORDER, backgroundColor: 'rgba(26,51,88,0.3)' }}>
+                                className="inline-flex items-center justify-center gap-2 font-semibold px-7 py-3.5 rounded-xl border transition-colors text-slate-700 hover:text-slate-900"
+                                style={{ borderColor: BORDER, backgroundColor: 'rgba(241,245,249,0.8)' }}>
                                 See how it works
                             </a>
                         </div>
@@ -87,7 +87,7 @@ export default function LandingPage() {
                         <div className="flex items-center justify-between mb-6 pb-5" style={{ borderBottom: `1px solid ${BORDER}` }}>
                             <div>
                                 <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#64748b' }}>Monthly Site Report</p>
-                                <p className="font-semibold text-slate-200">Arlington, VA — Location #04</p>
+                                <p className="font-semibold text-slate-800">Arlington, VA — Location #04</p>
                             </div>
                             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(34,197,94,0.12)', color: '#4ade80', border: '1px solid rgba(34,197,94,0.2)' }}>
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -96,9 +96,9 @@ export default function LandingPage() {
                         </div>
 
                         {/* Big savings number */}
-                        <div className="mb-6 p-5 rounded-xl" style={{ backgroundColor: 'rgba(234,88,12,0.08)', border: '1px solid rgba(234,88,12,0.15)' }}>
+                        <div className="mb-6 p-5 rounded-xl" style={{ backgroundColor: 'rgba(236,72,153,0.1)', border: '1px solid rgba(234,88,12,0.15)' }}>
                             <p className="text-sm font-medium mb-1" style={{ color: '#fb923c' }}>Estimated Labor Savings This Month</p>
-                            <p className="text-5xl font-extrabold tracking-tight text-white">
+                            <p className="text-5xl font-extrabold tracking-tight text-slate-900">
                                 ${savings.toLocaleString()}
                             </p>
                         </div>
@@ -110,8 +110,8 @@ export default function LandingPage() {
                                 { label: 'Robot Uptime', value: '99.8%' },
                                 { label: 'Open Alerts', value: '0' },
                             ].map(({ label, value }) => (
-                                <div key={label} className="p-3 rounded-lg text-center" style={{ backgroundColor: 'rgba(26,51,88,0.5)' }}>
-                                    <p className="text-lg font-bold text-white">{value}</p>
+                                <div key={label} className="p-3 rounded-lg text-center" style={{ backgroundColor: '#f8fafc' }}>
+                                    <p className="text-lg font-bold text-slate-900">{value}</p>
                                     <p className="text-xs mt-0.5" style={{ color: '#64748b' }}>{label}</p>
                                 </div>
                             ))}
@@ -124,8 +124,8 @@ export default function LandingPage() {
                                 { name: 'CCTV Monitoring — 4 cameras', status: 'Active' },
                                 { name: 'Remote Support', status: 'On call' },
                             ].map(({ name, status }) => (
-                                <div key={name} className="flex items-center justify-between py-2.5 px-3 rounded-lg" style={{ backgroundColor: 'rgba(26,51,88,0.3)' }}>
-                                    <span className="text-sm text-slate-300">{name}</span>
+                                <div key={name} className="flex items-center justify-between py-2.5 px-3 rounded-lg" style={{ backgroundColor: 'rgba(241,245,249,0.8)' }}>
+                                    <span className="text-sm text-slate-700">{name}</span>
                                     <span className="text-xs font-semibold" style={{ color: '#4ade80' }}>{status}</span>
                                 </div>
                             ))}
@@ -162,7 +162,7 @@ export default function LandingPage() {
                         <p className="text-slate-400 leading-relaxed mb-8">
                             Between rising wages, constant turnover, and no-shows, staffing a restaurant is harder than ever. Automation technology that could fix this already exists — the problem is nobody makes it easy to actually get it running in your kitchen.
                         </p>
-                        <p className="text-slate-300 leading-relaxed">
+                        <p className="text-slate-700 leading-relaxed">
                             That's what we do. Rush Robotics is a local integration service — we handle everything from camera setup to robot installation to ongoing support, so you can focus on your customers, not your tech stack.
                         </p>
                     </div>
@@ -177,7 +177,7 @@ export default function LandingPage() {
                                     {icon}
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-slate-200 mb-1">{title}</p>
+                                    <p className="font-semibold text-slate-800 mb-1">{title}</p>
                                     <p className="text-sm text-slate-400 leading-relaxed">{body}</p>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@ export default function LandingPage() {
             </section>
 
             {/* How It Works */}
-            <section id="how-it-works" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: 'rgba(15,30,56,0.35)' }} className="py-28">
+            <section id="how-it-works" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: '#ffffff' }} className="py-28">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="max-w-xl mb-16">
                         <h2 className="text-4xl font-extrabold tracking-tight mb-4">What working with us looks like</h2>
@@ -213,8 +213,8 @@ export default function LandingPage() {
                             },
                         ].map(({ n, title, body }) => (
                             <div key={n} className="relative p-7 rounded-2xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
-                                <p className="text-6xl font-black mb-6 select-none" style={{ color: 'rgba(26,51,88,0.8)' }}>{n}</p>
-                                <h3 className="text-lg font-bold mb-3 text-slate-100">{title}</h3>
+                                <p className="text-6xl font-black mb-6 select-none" style={{ color: 'rgba(203,213,225,0.8)' }}>{n}</p>
+                                <h3 className="text-lg font-bold mb-3 text-slate-900">{title}</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed">{body}</p>
                             </div>
                         ))}
@@ -240,7 +240,7 @@ export default function LandingPage() {
                                 onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(234,88,12,0.35)')}
                                 onMouseLeave={e => (e.currentTarget.style.borderColor = BORDER)}>
                                 <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: ORANGE }}>{tag}</p>
-                                <h3 className="text-xl font-bold mb-3 text-slate-100">{name}</h3>
+                                <h3 className="text-xl font-bold mb-3 text-slate-900">{name}</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed">{body}</p>
                             </div>
                         ))}
@@ -249,7 +249,7 @@ export default function LandingPage() {
             </section>
 
             {/* Pricing */}
-            <section id="pricing" className="py-28" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: 'rgba(15,30,56,0.35)' }}>
+            <section id="pricing" className="py-28" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, backgroundColor: '#ffffff' }}>
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="max-w-xl mb-14">
                         <h2 className="text-4xl font-extrabold tracking-tight mb-4">Straightforward pricing</h2>
@@ -259,11 +259,11 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
                         <div className="p-8 rounded-2xl" style={{ backgroundColor: CARD, border: `1px solid ${BORDER}` }}>
                             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#64748b' }}>One-Time</p>
-                            <p className="text-5xl font-extrabold mb-1 text-white">$1,000</p>
+                            <p className="text-5xl font-extrabold mb-1 text-slate-900">$1,000</p>
                             <p className="text-slate-400 mb-8">Integration fee</p>
                             <ul className="space-y-3">
                                 {['On-site kitchen audit & camera review', 'Digital twin + robot selection & simulation', 'Full installation & configuration', 'Staff onboarding'].map(f => (
-                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
                                         <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: ORANGE }} />
                                         {f}
                                     </li>
@@ -271,13 +271,13 @@ export default function LandingPage() {
                             </ul>
                         </div>
 
-                        <div className="p-8 rounded-2xl" style={{ backgroundColor: 'rgba(26,51,88,0.5)', border: `1px solid rgba(234,88,12,0.35)` }}>
+                        <div className="p-8 rounded-2xl" style={{ backgroundColor: '#f8fafc', border: `1px solid rgba(234,88,12,0.35)` }}>
                             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: ORANGE }}>Per Location / Month</p>
-                            <p className="text-5xl font-extrabold mb-1 text-white">$100</p>
+                            <p className="text-5xl font-extrabold mb-1 text-slate-900">$100</p>
                             <p className="text-slate-400 mb-8">Ongoing monitoring & support</p>
                             <ul className="space-y-3">
                                 {['24/7 CCTV system monitoring', 'Robot health & uptime alerts', 'Remote diagnostics & support', 'Monthly performance summary'].map(f => (
-                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
                                         <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: ORANGE }} />
                                         {f}
                                     </li>
@@ -297,7 +297,7 @@ export default function LandingPage() {
                     <p className="text-slate-400 leading-relaxed mb-8">
                         We work exclusively with restaurants in D.C., Maryland, and Virginia. Reach out and we'll schedule a free walkthrough — no pitch decks, no pressure.
                     </p>
-                    <div className="flex items-center justify-center gap-3 text-slate-300 mb-16">
+                    <div className="flex items-center justify-center gap-3 text-slate-700 mb-16">
                         <Phone className="w-4 h-4 text-orange-500" />
                         <span className="text-sm">We'll call you back within one business day.</span>
                     </div>
@@ -309,8 +309,8 @@ export default function LandingPage() {
             {/* Footer */}
             <footer className="py-8 border-t" style={{ backgroundColor: NAV, borderColor: BORDER }}>
                 <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <img src="/logo.png" alt="Rush Robotics" className="h-6 w-auto object-contain" />
-                    <p className="text-sm text-slate-600">© {new Date().getFullYear()} Rush Robotics · D.C., Maryland & Virginia</p>
+                    <img src="/logo-dark.png" alt="Rush Robotics" className="h-6 w-auto object-contain" />
+                    <p className="text-sm text-slate-400">© {new Date().getFullYear()} Rush Robotics · D.C., Maryland & Virginia</p>
                 </div>
             </footer>
         </div>

@@ -71,15 +71,15 @@ export default function Demo() {
   }, [appState]);
 
   return (
-    <div className="min-h-screen text-slate-50 font-sans selection:bg-orange-500/30 overflow-hidden flex flex-col relative" style={{ backgroundColor: '#080f1a' }}>
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-orange-500/30 overflow-hidden flex flex-col relative" style={{ backgroundColor: '#f8fafc' }}>
       {/* Background gradients */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none" style={{ backgroundColor: 'rgba(234,88,12,0.06)' }} />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none" style={{ backgroundColor: 'rgba(26,51,88,0.3)' }} />
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none" style={{ backgroundColor: 'rgba(236,72,153,0.1)' }} />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none" style={{ backgroundColor: 'rgba(59,130,246,0.15)' }} />
 
       {/* Header */}
-      <header className="h-16 border-b border-white/5 backdrop-blur-xl flex items-center px-6 z-20 shrink-0" style={{ backgroundColor: 'rgba(8,15,26,0.6)' }}>
+      <header className="h-16 border-b border-slate-200/60 backdrop-blur-xl flex items-center px-6 z-20 shrink-0" style={{ backgroundColor: 'rgba(255,255,255,0.6)' }}>
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Rush Robotics Logo" className="h-6 w-auto object-contain" />
+          <img src="/logo-dark.png" alt="Rush Robotics Logo" className="h-6 w-auto object-contain" />
         </div>
       </header>
 
@@ -88,11 +88,11 @@ export default function Demo() {
 
         {/* Chat / Input Pane */}
         <section
-          className={`flex flex-col rounded-2xl border border-white/5 backdrop-blur-lg shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${appState === 'idle'
+          className={`flex flex-col rounded-2xl border border-slate-200/60 backdrop-blur-lg shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${appState === 'idle'
             ? 'w-full max-w-3xl mx-auto my-12 h-[calc(100vh-10rem)]'
             : 'w-80 shrink-0 h-full'
             }`}
-          style={{ backgroundColor: 'rgba(15,30,56,0.4)' }}
+          style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}
         >
           {appState === 'idle' && (
             <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-in fade-in zoom-in duration-500">
@@ -110,17 +110,17 @@ export default function Demo() {
             <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-[#1a3358]' : 'border'}`}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-slate-200' : 'border'}`}
                     style={msg.role !== 'user' ? { backgroundColor: 'rgba(234,88,12,0.15)', borderColor: 'rgba(234,88,12,0.3)' } : {}}>
-                    {msg.role === 'user' ? <User className="w-4 h-4 text-slate-300" /> : <Bot className="w-4 h-4 text-orange-400" />}
+                    {msg.role === 'user' ? <User className="w-4 h-4 text-slate-700" /> : <Bot className="w-4 h-4 text-orange-400" />}
                   </div>
                   <div className={`px-4 py-3 rounded-2xl text-sm ${msg.role === 'user'
-                    ? 'text-slate-100 rounded-tr-sm break-words max-w-[85%]'
-                    : 'bg-white/5 border border-white/10 text-slate-300 rounded-tl-sm'
+                    ? 'text-slate-900 rounded-tr-sm break-words max-w-[85%]'
+                    : 'bg-slate-100/50 border border-slate-200 text-slate-700 rounded-tl-sm'
                     }`}
-                    style={msg.role === 'user' ? { backgroundColor: '#1a3358' } : {}}>
+                    style={msg.role === 'user' ? { backgroundColor: '#f1f5f9', color: '#0f172a' } : {}}>
                     {msg.hasAttachment && (
-                      <div className="flex items-center gap-2 mb-2 p-2 rounded border" style={{ backgroundColor: '#080f1a', borderColor: '#1a3358' }}>
+                      <div className="flex items-center gap-2 mb-2 p-2 rounded border" style={{ backgroundColor: '#f8fafc', borderColor: '#e2e8f0' }}>
                         <ImageIcon className="w-4 h-4 text-orange-400" />
                         <span className="text-xs font-mono text-orange-400 truncate">attachment_sketch.png</span>
                       </div>
@@ -135,14 +135,14 @@ export default function Demo() {
                   <div className="w-8 h-8 rounded-full border flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(234,88,12,0.15)', borderColor: 'rgba(234,88,12,0.3)' }}>
                     <Zap className="w-4 h-4 text-orange-400 animate-pulse" />
                   </div>
-                  <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/5 border border-white/10 w-full">
+                  <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-slate-100/50 border border-slate-200 w-full">
                     <div className="space-y-3">
                       {steps.map((step, i) => (
                         <div
                           key={i}
                           className={`flex items-center gap-2 text-xs font-mono transition-all duration-300 ${i < generationStep ? 'text-orange-400' :
                             i === generationStep ? 'text-orange-400 animate-pulse' :
-                              'text-slate-600'
+                              'text-slate-400'
                             }`}
                         >
                           {i < generationStep ? (
@@ -164,9 +164,9 @@ export default function Demo() {
           )}
 
           {/* Input Area */}
-          <div className="p-4 border-t border-white/5" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+          <div className="p-4 border-t border-slate-200/60" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
             <div className="relative group">
-              <button className="absolute left-3 top-1/2 -translate-y-1/2 p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white">
+              <button className="absolute left-3 top-1/2 -translate-y-1/2 p-2 hover:bg-slate-200/50 rounded-lg transition-colors text-slate-400 hover:text-slate-900">
                 <Plus className="w-5 h-5" />
               </button>
               <input
@@ -177,24 +177,24 @@ export default function Demo() {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={appState === 'generating' ? "Compiling..." : "Describe the assembly or drop CAD/images..."}
-                className="w-full bg-white/5 border border-white/10 text-white rounded-xl pl-12 pr-12 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all placeholder:text-slate-500 disabled:opacity-50"
+                className="w-full bg-slate-100/50 border border-slate-200 text-slate-900 rounded-xl pl-12 pr-12 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all placeholder:text-slate-500 disabled:opacity-50"
               />
               <button
                 onClick={handleSend}
                 disabled={!inputValue.trim() || appState === 'generating'}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-orange-600 hover:bg-orange-500 disabled:opacity-30 text-white rounded-lg transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-orange-600 hover:bg-orange-500 disabled:opacity-30 text-slate-900 rounded-lg transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>
             </div>
             {appState === 'idle' && (
               <div className="mt-3 flex gap-2 justify-center">
-                <button onClick={() => setInputValue("Analyze this macropad CAD and generate instructions.")} className="text-xs px-3 py-1.5 rounded-full border text-slate-400 hover:text-slate-200 transition-colors" style={{ borderColor: '#1a3358' }}
+                <button onClick={() => setInputValue("Analyze this macropad CAD and generate instructions.")} className="text-xs px-3 py-1.5 rounded-full border text-slate-400 hover:text-slate-800 transition-colors" style={{ borderColor: '#e2e8f0' }}
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1a3358')}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   "Analyze this macropad CAD..."
                 </button>
-                <button onClick={() => setInputValue("Costing for a 3-part enclosure")} className="text-xs px-3 py-1.5 rounded-full border text-slate-400 hover:text-slate-200 transition-colors" style={{ borderColor: '#1a3358' }}
+                <button onClick={() => setInputValue("Costing for a 3-part enclosure")} className="text-xs px-3 py-1.5 rounded-full border text-slate-400 hover:text-slate-800 transition-colors" style={{ borderColor: '#e2e8f0' }}
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1a3358')}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   "Costing for a 3-part..."
@@ -206,27 +206,27 @@ export default function Demo() {
 
         {/* Dashboard / Output Pane */}
         {appState !== 'idle' && (
-          <section className="flex-1 rounded-2xl border border-white/5 backdrop-blur-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right-8 duration-700 delay-100 fill-mode-both" style={{ backgroundColor: 'rgba(8,15,26,0.85)' }}>
+          <section className="flex-1 rounded-2xl border border-slate-200/60 backdrop-blur-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right-8 duration-700 delay-100 fill-mode-both" style={{ backgroundColor: 'rgba(255,255,255,0.85)' }}>
 
             {/* Dashboard Header */}
-            <div className="h-16 border-b border-white/10 flex items-center justify-between px-6 bg-white/5">
+            <div className="h-16 border-b border-slate-200 flex items-center justify-between px-6 bg-slate-100/50">
               <div className="flex gap-6">
                 <button
                   onClick={() => setActiveTab('instructions')}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'instructions' ? 'border-orange-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'instructions' ? 'border-orange-500 text-slate-900' : 'border-transparent text-slate-400 hover:text-slate-800'}`}
                 >
                   <FileText className="w-4 h-4" /> Work Instructions
                 </button>
                 <button
                   onClick={() => setActiveTab('bom')}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'bom' ? 'border-orange-500 text-white' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors border-b-2 h-16 pt-[2px] ${activeTab === 'bom' ? 'border-orange-500 text-slate-900' : 'border-transparent text-slate-400 hover:text-slate-800'}`}
                 >
                   <TableIcon className="w-4 h-4" /> Bill of Materials & Cost
                 </button>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="px-3 py-1 rounded-full border text-xs text-slate-400 font-mono" style={{ backgroundColor: '#0f1e38', borderColor: '#1a3358' }}>
+                <div className="px-3 py-1 rounded-full border text-xs text-slate-400 font-mono" style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
                   {appState === 'generating' ? 'Status: Building...' : 'Status: Ready'}
                 </div>
               </div>
@@ -238,7 +238,7 @@ export default function Demo() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex flex-col items-center gap-4 opacity-50">
                     <div className="relative w-16 h-16">
-                      <div className="absolute inset-0 border-4 rounded-full" style={{ borderColor: '#1a3358' }}></div>
+                      <div className="absolute inset-0 border-4 rounded-full" style={{ borderColor: '#e2e8f0' }}></div>
                       <div className="absolute inset-0 border-4 border-orange-500 rounded-full border-t-transparent animate-spin"></div>
                     </div>
                     <span className="text-sm text-slate-400 animate-pulse">Processing geometric relations...</span>
@@ -253,7 +253,7 @@ export default function Demo() {
                           <h2 className="text-2xl font-bold tracking-tight">Standard Operating Procedure</h2>
                           <p className="text-slate-400 text-sm mt-1">IoT Macropad Assembly REV A</p>
                         </div>
-                        <button className="flex items-center gap-2 px-4 py-2 text-slate-200 rounded-lg text-sm font-medium transition-colors border" style={{ backgroundColor: '#0f1e38', borderColor: '#1a3358' }}>
+                        <button className="flex items-center gap-2 px-4 py-2 text-slate-800 rounded-lg text-sm font-medium transition-colors border" style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
                           <FileDown className="w-4 h-4" /> Export PDF
                         </button>
                       </div>
@@ -276,14 +276,14 @@ export default function Demo() {
                             img: null, alt: ""
                           },
                         ].map(({ n, title, desc, img, alt }) => (
-                          <div key={n} className="rounded-xl p-6 border border-white/5" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+                          <div key={n} className="rounded-xl p-6 border border-slate-200/60" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
                             <div className="flex items-start gap-4">
                               <div className="w-10 h-10 rounded-full border flex items-center justify-center text-orange-400 font-bold shrink-0" style={{ backgroundColor: 'rgba(234,88,12,0.15)', borderColor: 'rgba(234,88,12,0.3)' }}>{n}</div>
                               <div className="flex-1">
                                 <h3 className="text-lg font-semibold mb-2">{title}</h3>
                                 <p className="text-slate-400 text-sm mb-4 leading-relaxed">{desc}</p>
                                 {img && (
-                                  <div className="aspect-video w-full rounded-lg overflow-hidden border border-white/10 flex items-center justify-center" style={{ backgroundColor: '#080f1a' }}>
+                                  <div className="aspect-video w-full rounded-lg overflow-hidden border border-slate-200 flex items-center justify-center" style={{ backgroundColor: '#f8fafc' }}>
                                     <img src={img} alt={alt} className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity" />
                                   </div>
                                 )}
@@ -300,59 +300,59 @@ export default function Demo() {
                           <h2 className="text-2xl font-bold tracking-tight">Live Economic Model</h2>
                           <p className="text-slate-400 text-sm mt-1">Sourcing via DigiKey & Xometry APIs (1,000 Volume)</p>
                         </div>
-                        <button className="flex items-center gap-2 px-4 py-2 text-slate-200 rounded-lg text-sm font-medium transition-colors border" style={{ backgroundColor: '#0f1e38', borderColor: '#1a3358' }}>
+                        <button className="flex items-center gap-2 px-4 py-2 text-slate-800 rounded-lg text-sm font-medium transition-colors border" style={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0' }}>
                           <Download className="w-4 h-4" /> Export Excel
                         </button>
                       </div>
 
                       <div className="grid grid-cols-3 gap-6 mb-8">
-                        <div className="p-5 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+                        <div className="p-5 rounded-xl border border-slate-200/60" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
                           <div className="text-sm font-medium text-slate-400 mb-1">Total Unit Cost</div>
-                          <div className="text-3xl font-bold text-white">${totalCost.toFixed(2)}</div>
+                          <div className="text-3xl font-bold text-slate-900">${totalCost.toFixed(2)}</div>
                           <div className="text-xs text-orange-400 mt-2 flex items-center gap-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-orange-500" /> Pricing Verified
                           </div>
                         </div>
-                        <div className="p-5 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+                        <div className="p-5 rounded-xl border border-slate-200/60" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
                           <div className="text-sm font-medium text-slate-400 mb-1">Est. Tooling Cost</div>
-                          <div className="text-3xl font-bold text-white">$1,850.00</div>
+                          <div className="text-3xl font-bold text-slate-900">$1,850.00</div>
                           <div className="text-xs text-amber-400 mt-2 flex items-center gap-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" /> Injection Mold Setup
                           </div>
                         </div>
-                        <div className="p-5 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+                        <div className="p-5 rounded-xl border border-slate-200/60" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
                           <div className="text-sm font-medium text-slate-400 mb-1">Critical Lead Time</div>
-                          <div className="text-3xl font-bold text-white">14 Days</div>
+                          <div className="text-3xl font-bold text-slate-900">14 Days</div>
                           <div className="text-xs text-slate-400 mt-2">Driven by RR-003</div>
                         </div>
                       </div>
 
-                      <div className="rounded-xl border border-white/5 overflow-hidden" style={{ backgroundColor: 'rgba(15,30,56,0.5)' }}>
+                      <div className="rounded-xl border border-slate-200/60 overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}>
                         <table className="w-full text-left text-sm whitespace-nowrap">
-                          <thead className="border-b border-white/5" style={{ backgroundColor: 'rgba(8,15,26,0.5)' }}>
+                          <thead className="border-b border-slate-200/60" style={{ backgroundColor: 'rgba(241,245,249,0.5)' }}>
                             <tr>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Part Number</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Description</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Supplier</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Qty</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Unit Cost</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300">Ext Cost</th>
-                              <th className="px-6 py-4 font-semibold text-slate-300 text-right">Lead Time</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Part Number</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Description</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Supplier</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Qty</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Unit Cost</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700">Ext Cost</th>
+                              <th className="px-6 py-4 font-semibold text-slate-700 text-right">Lead Time</th>
                             </tr>
                           </thead>
-                          <tbody className="divide-y divide-white/5">
+                          <tbody className="divide-y divide-slate-200/60">
                             {bomData.map((item, i) => (
-                              <tr key={i} className="hover:bg-white/5 transition-colors">
+                              <tr key={i} className="hover:bg-slate-100/50 transition-colors">
                                 <td className="px-6 py-4 font-mono text-xs text-orange-400">{item.partNo}</td>
-                                <td className="px-6 py-4 text-slate-200">{item.name}</td>
+                                <td className="px-6 py-4 text-slate-800">{item.name}</td>
                                 <td className="px-6 py-4 text-slate-400">{item.supplier}</td>
-                                <td className="px-6 py-4 text-slate-200">{item.qty}</td>
-                                <td className="px-6 py-4 text-slate-200">${item.unitCost.toFixed(2)}</td>
-                                <td className="px-6 py-4 text-slate-200 font-medium">${(item.unitCost * item.qty).toFixed(2)}</td>
+                                <td className="px-6 py-4 text-slate-800">{item.qty}</td>
+                                <td className="px-6 py-4 text-slate-800">${item.unitCost.toFixed(2)}</td>
+                                <td className="px-6 py-4 text-slate-800 font-medium">${(item.unitCost * item.qty).toFixed(2)}</td>
                                 <td className="px-6 py-4 text-slate-400 text-right">{item.leadTime}</td>
                               </tr>
                             ))}
-                            <tr className="font-semibold border-t border-white/10" style={{ backgroundColor: 'rgba(8,15,26,0.3)' }}>
+                            <tr className="font-semibold border-t border-slate-200" style={{ backgroundColor: 'rgba(241,245,249,0.3)' }}>
                               <td colSpan={5} className="px-6 py-4 text-right">Total:</td>
                               <td className="px-6 py-4 text-orange-400">${totalCost.toFixed(2)}</td>
                               <td></td>
@@ -373,8 +373,8 @@ export default function Demo() {
         __html: `
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.1); border-radius: 20px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(255,255,255,0.2); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 20px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(0,0,0,0.2); }
       `}} />
     </div>
   );
